@@ -25,6 +25,8 @@ def add_edge(G, edge_input):
     except:
         st.warning("Enter edge format as A,B,weight")
 
+
+
 def generate_random_graph(G, graph_type):
     """Generate a random graph with the given parameters."""
     rand_nodes = st.sidebar.number_input("Number of Nodes", min_value=1, step=1, key="rand_nodes")
