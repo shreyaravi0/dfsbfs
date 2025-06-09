@@ -1,6 +1,8 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import streamlit as st
+import community.community_louvain as community
+
 
 # Color constants
 CURRENT_NODE_COLOR = "orange"
@@ -78,11 +80,33 @@ def social_media_simulation(G):
                 st.info("No recommendations available.")
             draw_recommendation_graph(G, set(G.neighbors(user)), recommendations, user)
 
+    # elif feature == "Community Detection":
+    #     try:
+    #         import community
+    #         partition = community.best_partition(G)
+    #         st.markdown("### 🧠 Community Detection Result")
+    #         communities = {}
+    #         for node, com_id in partition.items():
+    #             communities.setdefault(com_id, []).append(node)
+
+    #         for cid, members in communities.items():
+    #             st.markdown(f"- Community {cid + 1}: {', '.join(members)}")
+
+    #         pos = nx.spring_layout(G)
+    #         plt.clf()
+    #         cmap = plt.get_cmap('viridis')
+    #         colors = [partition[node] for node in G.nodes]
+    #         nx.draw(G, pos, node_color=colors, with_labels=True, node_size=800)
+    #         st.pyplot(plt.gcf())
+
+    #     except ImportError:
+    #         st.warning("`community` module not installed. Run `pip install python-louvain`.")
+
     elif feature == "Community Detection":
         try:
-            import community
             partition = community.best_partition(G)
             st.markdown("### 🧠 Community Detection Result")
+
             communities = {}
             for node, com_id in partition.items():
                 communities.setdefault(com_id, []).append(node)
@@ -98,7 +122,8 @@ def social_media_simulation(G):
             st.pyplot(plt.gcf())
 
         except ImportError:
-            st.warning("`community` module not installed. Run `pip install python-louvain`.")
+            st.warning("`python-louvain` is not installed. Run `pip install python-louvain`.")
+    
 
     elif feature == "Top Influencers":
         centrality = nx.degree_centrality(G)
