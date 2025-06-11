@@ -31,4 +31,40 @@ An interactive Streamlit web app for visualizing **BFS** and **DFS** traversal o
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/shreyaravi0/dfsbfs
-   cd graph-traversal-visualizer
+   cd DFSBFS
+
+## 🐍 Create and Activate a Virtual Environment
+
+### On macOS/Linux:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+```
+### On Windows: 
+   ```bash
+      python -m venv venv
+      venv\Scripts\activate
+   ``` 
+
+
+## 📄 Install Required Packages
+
+Make sure you're inside the virtual environment, then run:
+
+```bash
+pip install -r requirements.txt
+```
+
+## 📂 Navigate to Project Folder 
+
+If your app is inside a subfolder (like label), go into it:
+
+```bash
+cd label
+```
+
+## 🚀 Run the Application
+
+```bash
+streamlit run app.py
+```
